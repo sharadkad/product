@@ -1,0 +1,46 @@
+input.ng-invalid{
+    border-left: 4px solid red
+}
+
+input.ng-valid{
+    border-left: 4px solid green;
+}
+
+textarea.ng-invalid{
+    border-left: 4px solid red
+}
+
+textarea.ng-valid{
+    border-left: 4px solid green;
+}
+
+.btn-primary:disabled {
+    opacity: 0.2;
+}
+
+.error{
+    color: red;
+}
+
+form{
+    padding: 20px;
+    border: 3px solid #add8e6;
+    border-radius: 2%;
+}
+
+label{
+    font-weight: 700;
+}
+
+.container{
+    max-width: 95vw;
+}
+
+.table-responsive button{
+    color: #fff;
+    font-size: 12px;
+}
+
+.table-bordered td, .table-bordered th {
+    font-size: 15px;
+}

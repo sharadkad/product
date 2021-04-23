@@ -1,0 +1,57 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xs-11 col-sm-7 col-md-4">
+            <form #productForm="ngForm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Product Name</label>
+                  <input type="text" class="form-control"  #pname="ngModel" name="name" pattern="[A-Za-z ]{1,40}" maxlength="40" ngModel  placeholder="Enter Product" required>
+                  <span *ngIf="pname.invalid && pname.touched" class="error">Please enter valid product name</span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+                  <textarea rows="4" cols="50"  #desc="ngModel" minlength="10"  class="form-control" name="description" ngModel placeholder="Enter Description" required>
+                    Enter text here...</textarea>
+                  <span *ngIf="desc.invalid && desc.touched" class="error">Please enter atleast 10 charecters</span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Price</label>
+                  <input type="text" class="form-control" pattern= "[0-9]+" #price="ngModel" name="price" ngModel placeholder="Enter price" required>
+                  <span *ngIf="price.invalid && price.touched" class="error">Price should be in number</span>
+                </div>
+
+
+                <button type="button" [disabled]=productForm.invalid  (click)="addproduct(productForm)" class="btn btn-primary">{{ editmode? 'Update': 'Add' }}</button>
+              </form>
+        </div>
+
+        <div class="col-xs-11 col-md-8  mt-md-0 mt-4">
+          <div class="table-responsive">
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of products.data, index as i">
+                    <td>{{p.name}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.description}}</td>
+                    <td>
+                        <button class="btn btn-warning" (click)="editProduct(productForm, i)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteProduct(i)">Delete</button>
+                    </td>
+                  </tr>
+                 </tbody>
+              </table>
+              </div>
+        </div>
+    </div>
+</div>
+
